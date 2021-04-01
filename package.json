@@ -1,5 +1,5 @@
 {
-  "name": "urtest",
+  "name": "instaclone",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -37,7 +37,7 @@
     "@babel/core": "^7.13.10",
     "@babel/node": "^7.13.12",
     "@babel/preset-env": "^7.13.12",
-    "prisma": "^2.20.1",
+    "prisma": "^2.19.0",
     "ts-node": "^9.1.1",
     "typescript": "^4.2.3"
   },

@@ -11,36 +11,14 @@ generator client {
 }
 
 model User {
-  id        Int        @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   firstName String
   lastName  String?
-  userName  String     @unique
-  email     String     @unique
+  userName  String   @unique
+  email     String   @unique
   password  String
   bio       String?
   avatar    String?
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  bookMark  BookMark[]
-}
-
-// todo: 유저등급 grade String
-
-model BookMark {
-  id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
-  userId    Int
-  content   Content  @relation(fields: [contentId], references: [id])
-  contentId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
-model Content {
-  id       Int        @id @default(autoincrement())
-  name     String
-  BookMark BookMark[]
-}
-
-// createBookMark
-// userId와 contentId를 받아서 BookMark테이블에저장하고 contentId를 배열에 담아서 리턴

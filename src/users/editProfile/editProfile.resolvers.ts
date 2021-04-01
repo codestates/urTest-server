@@ -1,5 +1,5 @@
 import { createWriteStream } from "fs";
-import * as bycrpt from "bcrypt";
+import bycrpt from "bcrypt";
 import { protectedResolver } from "../users.utils";
 import { Resolvers } from "../../types";
 

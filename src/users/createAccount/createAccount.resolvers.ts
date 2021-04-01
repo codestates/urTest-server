@@ -1,5 +1,5 @@
 import client from "../../client";
-import * as bycrpt from "bcrypt";
+import bycrpt from "bcrypt";
 
 export default {
   Mutation: {
