@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "preinstall": "npx npm-force-resolutions",
     "dev": "nodemon --exec ts-node src/server --ext ts.js",
     "migrate": "npx prisma migrate dev --preview-feature",
     "reset": "npx prisma migrate reset --preview-feature",
