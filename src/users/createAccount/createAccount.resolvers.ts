@@ -1,12 +1,10 @@
 import client from "../../client";
-import bycrpt from "bcrypt";
+import * as bycrpt from "bcrypt";
+import { Resolvers } from "../../types";
 
-export default {
+const resolvers: Resolvers = {
   Mutation: {
-    createAccount: async (
-      _,
-      { firstName, lastName, userName, email, password }
-    ) => {
+    createAccount: async (_, { userName, email, password }) => {
       // todo: check if username or email are already on DB.
       // todo: hass password
       // todo: save and return the user
@@ -31,8 +29,6 @@ export default {
           data: {
             userName,
             email,
-            firstName,
-            lastName,
             password: uglyPassword,
           },
         });
@@ -42,3 +38,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

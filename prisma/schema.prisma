@@ -1,6 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -11,14 +10,45 @@ generator client {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  firstName String
-  lastName  String?
-  userName  String   @unique
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  userName  String    @unique
+  email     String    @unique
   password  String
-  bio       String?
-  avatar    String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  contents  Content[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  // bookMark  BookMark[]
 }
+
+//유저등급해야됨
+
+model Content {
+  id        Int       @id @default(autoincrement())
+  file      String
+  User      User?     @relation(fields: [userId], references: [id])
+  userId    Int?
+  caption   String?
+  hashtags  Hashtag[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  // BookMark BookMark[]
+}
+
+model Hashtag {
+  id        Int       @id @default(autoincrement())
+  hashtag   String
+  contents  Content[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+// // todo: 유저등급 grade String
+// model BookMark {
+//   id        Int      @id @default(autoincrement())
+//   user      User     @relation(fields: [userId], references: [id])
+//   userId    Int
+//   content   Content  @relation(fields: [contentId], references: [id])
+//   contentId Int
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+// }
