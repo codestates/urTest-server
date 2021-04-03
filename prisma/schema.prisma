@@ -10,45 +10,50 @@ generator client {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  userName  String    @unique
-  email     String    @unique
+  id        Int        @id @default(autoincrement())
+  userName  String     @unique
+  email     String     @unique
+  grade     String     @default("user")
   password  String
-  contents  Content[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  // bookMark  BookMark[]
+  Contents  Content[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  bookMarks BookMark[]
+  comments  Comment[]
 }
-
-//유저등급해야됨
 
 model Content {
-  id        Int       @id @default(autoincrement())
-  file      String
-  User      User?     @relation(fields: [userId], references: [id])
+  id        Int        @id @default(autoincrement())
+  photos    Photo[]
+  bookMarks BookMark[]
+  comments  Comment[]
+  title     String
+  desc      String
+  User      User?      @relation(fields: [userId], references: [id])
   userId    Int?
-  caption   String?
-  hashtags  Hashtag[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  // BookMark BookMark[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
 }
 
-model Hashtag {
-  id        Int       @id @default(autoincrement())
-  hashtag   String
-  contents  Content[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+model Photo {
+  id        Int      @id @default(autoincrement())
+  Content   Content? @relation(fields: [contentId], references: [id])
+  contentId Int?
+  photos    String?
 }
 
-// // todo: 유저등급 grade String
-// model BookMark {
-//   id        Int      @id @default(autoincrement())
-//   user      User     @relation(fields: [userId], references: [id])
-//   userId    Int
-//   content   Content  @relation(fields: [contentId], references: [id])
-//   contentId Int
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-// }
+model BookMark {
+  id        Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Content   Content? @relation(fields: [contentId], references: [id])
+  contentId Int?
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    Int?
+  Content   Content? @relation(fields: [contentId], references: [id])
+  contentId Int?
+}
