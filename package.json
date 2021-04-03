@@ -1,5 +1,5 @@
 {
-  "name": "instaclone",
+  "name": "urtest",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -29,6 +29,7 @@
     "express": "^4.17.1",
     "graphql": "^15.5.0",
     "graphql-tools": "^7.0.4",
+    "image-to-base64": "^2.1.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.7"

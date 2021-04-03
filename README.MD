@@ -1,16 +1,19 @@
-# Instaclone
-
-Instaclone Backend.
-
 # User:
 
 - [ ] Create Accout
 - [ ] See profile
 - [ ] Login
 - [ ] Edit Profile
-- [ ] Follow User
-- [ ] Unfollow User
-- [ ] Change Avatar (Image Upload) 
 
+# Test
+- [ ] imgGame
+- [ ] TextGame
 
-// npx prisma studio
+# Answer
+- [ ] pick
+- [ ] corret
+- [ ] wrong
+
+# Question
+- [ ] testId
+- [ ] id
