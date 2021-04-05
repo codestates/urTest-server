@@ -13,7 +13,11 @@ const resolvers: Resolvers = {
           where: { email },
         });
         if (existingUser) {
-          throw new Error("Email is already taken.");
+          return {
+            ok: false,
+            error: "Email is already taken.",
+          };
+          // throw new Error("Email is already taken.");
         }
         const uglyPassword = await bycrpt.hash(password, 10);
         await client.user.create({
