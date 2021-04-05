@@ -2,10 +2,10 @@ import client from "../../client";
 
 export default {
   Query: {
-    seeContent: (_, { id }) =>
-      client.content.findUnique({
+    getPhoto: (_, { contentId }) =>
+      client.photo.findMany({
         where: {
-          id,
+          contentId,
         },
       }),
   },
