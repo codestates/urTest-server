@@ -10,7 +10,6 @@ const resolvers: Resolvers = {
       async (_, { title, desc, files }, { loggedInUser }) => {
         let fileUrl = null;
         let newFile = [];
-        let fileName = [];
         if (!files) {
           return {
             ok: false,
@@ -36,7 +35,6 @@ const resolvers: Resolvers = {
             })
           );
         }
-        console.log(newFile);
 
         const newFileObj = newFile.map((file) => ({
           photos: file,

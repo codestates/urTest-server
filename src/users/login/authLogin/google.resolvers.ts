@@ -6,7 +6,7 @@ import { Resolvers } from "../../../types";
 
 const resolvers: Resolvers = {
   Mutation: {
-    login: async (_, { token }) => {
+    authLogin: async (_, { token }) => {
       const oauthClient = new OAuth2Client("");
       const ticket = await oauthClient.verifyIdToken({
         idToken: token,

@@ -1,11 +1,11 @@
 import { gql } from "apollo-server-core";
 
 export default gql`
-  type LoginResult {
+  type loginResult {
     ok: Boolean!
     error: String
   }
   type Mutation {
-    login(token: String!): LoginResult!
+    authLogin(token: String!): loginResult!
   }
 `;
