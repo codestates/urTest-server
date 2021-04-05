@@ -1,12 +1,17 @@
 import client from "../../client";
+import { Resolvers } from "../../types";
+import { protectedResolver } from "../../users/users.utils";
 
-export default {
+const resolvers: Resolvers = {
   Query: {
-    getPhoto: (_, { contentId }) =>
+    getPhoto: protectedResolver((_, { contentId }) =>
       client.photo.findMany({
         where: {
           contentId,
         },
-      }),
+      })
+    ),
   },
 };
+
+export default resolvers;
