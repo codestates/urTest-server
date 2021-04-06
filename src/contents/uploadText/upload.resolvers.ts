@@ -1,24 +1,29 @@
-import { Resolvers } from "../../types";
-import { protectedResolver } from "../../users/users.utils";
-import { createWriteStream } from "fs";
+import { json } from "express";
+import { builtinModules } from "node:module";
 import client from "../../client";
-import { uploadToS3 } from "../../../shared/shared.utils";
-
-const resolvers: Resolvers = {
+import { protectedResolver } from "../../users/users.utils";
+const resolvers = {
   Mutation: {
-    uploadContent: protectedResolver(
-      async (_, { title, desc, files }, { loggedInUser }) => {
-        if (!files) {
-          return {
-            ok: false,
-            error: "can't find text",
-          };
-        }
-        if (files) {
-        }
+    uploadText: protectedResolver((_, { textTest }) => {
+      const textData = JSON.parse(textTest);
+      if (!textTest) {
+        return {
+          ok: false,
+          error: "there is no gameTitle",
+        };
+      } else {
+        textData.map((obj) => {
+          let newArr = [];
+          client.question.create({
+            data: {
+              questionBody: Object.keys(obj)[0],
+            },
+          });
+
+          client.answer.create({});
+        });
       }
-    ),
+    }),
   },
 };
-
-export default resolvers;
+module.exports = resolvers;

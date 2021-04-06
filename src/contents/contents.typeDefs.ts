@@ -7,9 +7,16 @@ export default gql`
     photos: String!
     photoName: String!
   }
+  type Question {
+    id: Int!
+    questionBody: String
+    contentId: Int!
+  }
+
   type Content {
     id: Int!
     user: User!
+    question: [Question]
     photos: [Photo]!
     title: String
     desc: String
