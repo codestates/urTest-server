@@ -8,7 +8,7 @@ export default {
       });
     },
     photos: ({ userId }, data) => {
-      console.log(userId, "Fuck", data);
+      console.log(userId, data);
     },
 
     question: ({ contentId }) => {
@@ -18,7 +18,4 @@ export default {
       });
     },
   },
-  // Photo:{
-  //   photoName:({})
-  // }
 };
