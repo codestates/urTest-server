@@ -5,6 +5,7 @@ export default gql`
     id: Int!
     contentId: Int!
     photos: String!
+    photoName: String!
   }
   type Question {
     id: Int!
