@@ -27,6 +27,7 @@ model Content {
   photos    Photo[]
   bookMarks BookMark[]
   comments  Comment[]
+  question  Question[]
   title     String
   desc      String
   User      User?      @relation(fields: [userId], references: [id])
@@ -57,3 +58,26 @@ model Comment {
   Content   Content? @relation(fields: [contentId], references: [id])
   contentId Int?
 }
+
+model Question {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  questionBody String
+  answer       Answer[]
+  Content      Content? @relation(fields: [contentId], references: [id])
+  contentId    Int?
+}
+
+model Answer {
+
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  body      String
+
+  Question   Question? @relation(fields: [questionId], references: [id])
+  questionId Int?
+}
+
+// To do : migrate
