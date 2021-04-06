@@ -7,10 +7,8 @@ export default {
         where: { id: userId },
       });
     },
-    photos: ({ contentId }) => {
-      return client.photo.findMany({
-        where: { id: contentId },
-      });
+    photos: ({ userId }, data) => {
+      console.log(userId, data);
     },
 
     question: ({ contentId }) => {
