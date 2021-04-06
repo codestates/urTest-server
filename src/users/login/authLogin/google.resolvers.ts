@@ -1,16 +1,15 @@
-import * as bycrpt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import { OAuth2Client } from "google-auth-library";
-import client from "../../../client";
 import { Resolvers } from "../../../types";
 
 const resolvers: Resolvers = {
   Mutation: {
-    authLogin: async (_, { token }) => {
-      const oauthClient = new OAuth2Client("");
+    authLogin: async (_, { googleToken }, { client }) => {
+      const oauthClient = new OAuth2Client();
       const ticket = await oauthClient.verifyIdToken({
-        idToken: token,
-        audience: "",
+        idToken: googleToken,
+        audience:
+          "724060049648-nnacpoao7gftdukk1gurp600rfgme79k.apps.googleusercontent.com",
       });
       const payload = ticket.getPayload();
       const user_email = payload["email"];
@@ -21,14 +20,31 @@ const resolvers: Resolvers = {
       });
       if (user) {
         // ! email 있으면 todo 없으면 새로만듬
+        const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+        return {
+          ok: true,
+          token,
+        };
       }
-      return client.user.create({
+      const data = await client.user.create({
         data: {
           userName: "null",
           email: user_email,
           password: "password",
         },
       });
+      console.log(data);
+
+      // await client.user.findUnique({
+      //   where:{
+      //     email:user_email
+      //   }
+      // })
+      const token = await jwt.sign({ id: data.id }, process.env.SECRET_KEY);
+      return {
+        ok: true,
+        token,
+      };
     },
   },
 };

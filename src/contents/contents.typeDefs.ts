@@ -13,6 +13,7 @@ export default gql`
     photos: [Photo]!
     title: String
     desc: String
+    userId: Int
     createdAt: String!
     updatedAt: String!
   }

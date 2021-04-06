@@ -1,11 +1,10 @@
-import client from "../../client";
 import * as bycrpt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 import { Resolvers } from "../../types";
 
 const resolvers: Resolvers = {
   Mutation: {
-    login: async (_, { email, password }) => {
+    login: async (_, { email, password }, { client }) => {
       // todo: find user with args.username
       // todo: check password with args.password
       // todo: issue a token and send it to the user
