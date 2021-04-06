@@ -21,7 +21,7 @@ export const getUser = async (token) => {
     return null;
   }
 };
-
+//! ourResolver:Resolver의 뜻
 export function protectedResolver(ourResolver: Resolver) {
   return function (root, args, context, info) {
     if (!context.loggedInUser) {

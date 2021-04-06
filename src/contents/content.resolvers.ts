@@ -10,6 +10,13 @@ export default {
     photos: ({ userId }, data) => {
       console.log(userId, "Fuck", data);
     },
+
+    question: ({ contentId }) => {
+      console.log(contentId);
+      return client.question.findMany({
+        where: { id: contentId },
+      });
+    },
   },
   // Photo:{
   //   photoName:({})
