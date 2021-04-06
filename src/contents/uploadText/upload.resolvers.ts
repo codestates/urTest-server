@@ -13,14 +13,11 @@ const resolvers = {
         };
       } else {
         textData.map((obj) => {
-          let newArr = [];
           client.question.create({
             data: {
               questionBody: Object.keys(obj)[0],
             },
           });
-
-          client.answer.create({});
         });
       }
     }),

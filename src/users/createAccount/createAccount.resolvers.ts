@@ -10,28 +10,26 @@ const resolvers: Resolvers = {
       // todo: save and return the user
       try {
         const existingUser = await client.user.findFirst({
-          where: {
-            OR: [
-              {
-                userName,
-              },
-              {
-                email,
-              },
-            ],
-          },
+          where: { email },
         });
         if (existingUser) {
-          throw new Error("This username/password is already taken.");
+          return {
+            ok: false,
+            error: "Email is already taken.",
+          };
+          // throw new Error("Email is already taken.");
         }
         const uglyPassword = await bycrpt.hash(password, 10);
-        return client.user.create({
+        await client.user.create({
           data: {
             userName,
             email,
             password: uglyPassword,
           },
         });
+        return {
+          ok: true,
+        };
       } catch (error) {
         return error;
       }
