@@ -1,20 +1,16 @@
 import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 import { createWriteStream } from "fs";
-import client from "../../client";
 import { uploadToS3 } from "../../../shared/shared.utils";
 
 const resolvers: Resolvers = {
   Mutation: {
     uploadContent: protectedResolver(
-      async (_, { title, desc, files }, { loggedInUser }) => {
+      async (_, { title, desc, files }, { loggedInUser, client }) => {
         let fileUrl = null;
         let newFile = [];
         if (!files) {
-          return {
-            ok: false,
-            error: "can't find photos",
-          };
+          throw new Error("Can not upload files");
         }
         if (files) {
           newFile = await Promise.all(
@@ -51,9 +47,6 @@ const resolvers: Resolvers = {
             },
           },
         });
-        return {
-          ok: true,
-        };
       }
     ),
   },

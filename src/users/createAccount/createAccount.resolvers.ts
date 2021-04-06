@@ -1,10 +1,9 @@
-import client from "../../client";
 import * as bycrpt from "bcrypt";
 import { Resolvers } from "../../types";
 
 const resolvers: Resolvers = {
   Mutation: {
-    createAccount: async (_, { userName, email, password }) => {
+    createAccount: async (_, { userName, email, password }, { client }) => {
       // todo: check if username or email are already on DB.
       // todo: hass password
       // todo: save and return the user

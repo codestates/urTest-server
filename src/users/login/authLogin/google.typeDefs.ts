@@ -4,8 +4,9 @@ export default gql`
   type loginResult {
     ok: Boolean!
     error: String
+    token: String!
   }
   type Mutation {
-    authLogin(token: String!): loginResult!
+    authLogin(googleToken: String!): loginResult!
   }
 `;
