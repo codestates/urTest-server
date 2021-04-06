@@ -12,5 +12,12 @@ export default {
         where: { id: contentId },
       });
     },
+
+    question: ({ contentId }) => {
+      console.log(contentId);
+      return client.question.findMany({
+        where: { id: contentId },
+      });
+    },
   },
 };

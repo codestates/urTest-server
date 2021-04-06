@@ -6,8 +6,12 @@ export default gql`
     ok: Boolean
     error: String
   }
-  type Mutation {
 
-        uploadText(textTest:String,title:String,desc:String): TextResult
+  input data {
+    eachTest: String
   }
-`
+
+  type Mutation {
+    uploadText(textTest: [[data]], title: String, desc: String): TextResult
+  }
+`;
