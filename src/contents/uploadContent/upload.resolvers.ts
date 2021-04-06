@@ -40,6 +40,7 @@ const resolvers: Resolvers = {
           photos: file,
           photoName: file.split("-")[file.split("-").length - 1],
         }));
+
         await client.content.create({
           data: {
             title,
@@ -55,14 +56,6 @@ const resolvers: Resolvers = {
         };
       }
     ),
-
-
-    
-
-
-
-
-
   },
 };
 
