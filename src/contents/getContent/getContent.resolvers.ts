@@ -4,7 +4,7 @@ import { protectedResolver } from "../../users/users.utils";
 const resolvers: Resolvers = {
   Query: {
     getContent: async (_, { id }, { client }) => {
-      return await client.content.findFirst({
+      return await client.content.findUnique({
         where: {
           id,
         },
