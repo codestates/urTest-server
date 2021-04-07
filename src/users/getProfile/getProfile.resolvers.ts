@@ -1,31 +1,24 @@
 import { Resolvers } from "../../types";
-import { protectedResolver } from "../users.utils";
 
 const resolvers: Resolvers = {
   Query: {
-    getProfile: protectedResolver(async (_, { id, type }, { client }) => {
+    getProfile: async (_, { id }, { client }) => {
       try {
-        if (!id && !type) {
-          return await client.content.findMany();
+        if (!id) {
+          throw new Error("error");
         }
-        if (id && !type) {
-          return await client.user.findUnique({
-            where: {
-              id,
-            },
-          });
-        }
-        if (!id && type) {
-          return await client.content.findMany({
-            where: {
-              type,
-            },
-          });
-        }
+        // if (!id) {
+        //   return await client.content.findMany();
+        // }
+        return await client.user.findUnique({
+          where: {
+            id,
+          },
+        });
       } catch (error) {
         return error;
       }
-    }),
+    },
   },
 };
 
