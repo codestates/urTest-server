@@ -2,6 +2,6 @@ import { gql } from "apollo-server-core";
 
 export default gql`
   type Query {
-    getProfile(id: Int!): User
+    getProfile(id: Int, type: String): User
   }
 `;

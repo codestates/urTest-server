@@ -7,7 +7,7 @@ const resolvers: Resolvers = {
       if (!userId) {
         return await client.content.findMany();
       }
-      await client.content.findFirst({
+      return await client.content.findFirst({
         where: {
           userId,
         },

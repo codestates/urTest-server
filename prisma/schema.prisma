@@ -30,6 +30,7 @@ model Content {
   question  Question[]
   title     String
   desc      String
+  type      String
   User      User?      @relation(fields: [userId], references: [id])
   userId    Int?
   createdAt DateTime   @default(now())

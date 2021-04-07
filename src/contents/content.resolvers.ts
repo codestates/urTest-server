@@ -7,12 +7,13 @@ export default {
         where: { id: userId },
       });
     },
-    photos: ({ userId }, data) => {
-      console.log(userId, data);
+    photos: ({ id }) => {
+      return client.photo.findMany({
+        where: { contentId: id },
+      });
     },
 
     question: ({ contentId }) => {
-      console.log(contentId);
       return client.question.findMany({
         where: { id: contentId },
       });
