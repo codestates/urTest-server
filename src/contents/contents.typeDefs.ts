@@ -7,6 +7,7 @@ export default gql`
     photos: String!
     photoName: String!
   }
+
   type Question {
     id: Int!
     questionBody: String

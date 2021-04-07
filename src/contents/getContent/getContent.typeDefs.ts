@@ -2,6 +2,7 @@ import { gql } from "apollo-server-core";
 
 export default gql`
   type Query {
-    getContent(userId: Int): Content
+    getContent(id: Int!): Content
+    getContentAll(userId: Int, type: String): [Content]
   }
 `;

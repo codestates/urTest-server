@@ -38,7 +38,7 @@ const resolvers: Resolvers = {
         }));
         return await client.content.create({
           data: {
-            type: "1",
+            type: "imgGame",
             title,
             desc,
             userId: loggedInUser.id,
