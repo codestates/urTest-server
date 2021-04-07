@@ -14,14 +14,15 @@ export default gql`
   }
 
   type Content {
-    id: Int!
-    user: User!
+    id: Int
+    user: User
     question: [Question]
-    photos: [Photo]!
+    photos: [Photo]
     title: String
     desc: String
+    type: String
     userId: Int
-    createdAt: String!
-    updatedAt: String!
+    createdAt: String
+    updatedAt: String
   }
 `;

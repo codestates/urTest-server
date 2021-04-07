@@ -19,7 +19,6 @@ const resolvers: Resolvers = {
         },
       });
       if (user) {
-        // ! email 있으면 todo 없으면 새로만듬
         const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
         return {
           ok: true,
@@ -33,13 +32,6 @@ const resolvers: Resolvers = {
           password: "password",
         },
       });
-      console.log(data);
-
-      // await client.user.findUnique({
-      //   where:{
-      //     email:user_email
-      //   }
-      // })
       const token = await jwt.sign({ id: data.id }, process.env.SECRET_KEY);
       return {
         ok: true,

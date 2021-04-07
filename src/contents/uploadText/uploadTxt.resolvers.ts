@@ -14,6 +14,7 @@ const resolvers = {
         if (textTest) {
           await client.content.create({
             data: {
+              type: "2",
               title,
               desc,
               userId: loggedInUser.id,

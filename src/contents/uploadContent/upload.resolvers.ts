@@ -38,6 +38,7 @@ const resolvers: Resolvers = {
         }));
         return await client.content.create({
           data: {
+            type: "1",
             title,
             desc,
             userId: loggedInUser.id,
@@ -48,14 +49,6 @@ const resolvers: Resolvers = {
         });
       }
     ),
-
-
-    
-
-
-
-
-
   },
 };
 
