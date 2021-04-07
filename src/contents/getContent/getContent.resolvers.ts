@@ -3,15 +3,29 @@ import { protectedResolver } from "../../users/users.utils";
 
 const resolvers: Resolvers = {
   Query: {
-    getContent: async (_, { userId }, { client }) => {
-      if (!userId) {
-        return await client.content.findMany();
-      }
-      await client.content.findFirst({
+    getContent: async (_, { id }, { client }) => {
+      return await client.content.findFirst({
         where: {
-          userId,
+          id,
         },
       });
+    },
+    getContentAll: async (_, { userId, type }, { client }) => {
+      if (userId && !type) {
+        return await client.content.findMany({
+          where: {
+            userId,
+          },
+        });
+      }
+      if (!userId && type) {
+        return await client.content.findMany({
+          where: {
+            type,
+          },
+        });
+      }
+      return await client.content.findMany();
     },
   },
 };
