@@ -39,6 +39,7 @@ const resolvers: Resolvers = {
 
         await client.content.create({
           data: {
+            type: "imgGame",
             title,
             desc,
             userId: loggedInUser.id,
