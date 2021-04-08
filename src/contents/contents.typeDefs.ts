@@ -4,14 +4,24 @@ export default gql`
   type Photo {
     id: Int!
     contentId: Int!
-    photos: String!
+    photoUrl: String!
     photoName: String!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Question {
     id: Int!
     questionBody: String
     contentId: Int!
+    createdAt: String!
+    updatedAt: String!
+  }
+  type BookMark {
+    id: Int!
+    Content: Content!
+    createdAt: String!
+    updatedAt: String!
   }
 
   type Content {

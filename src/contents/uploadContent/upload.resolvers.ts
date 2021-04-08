@@ -33,7 +33,7 @@ const resolvers: Resolvers = {
         }
 
         const newFileObj = newFile.map((file) => ({
-          photos: file,
+          photoUrl: file,
           photoName: file.split("-")[file.split("-").length - 1],
         }));
 

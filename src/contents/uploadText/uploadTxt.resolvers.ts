@@ -1,4 +1,5 @@
 import { json } from "express";
+import { fieldToFieldConfig } from "graphql-tools";
 import client from "../../client";
 import { protectedResolver } from "../../users/users.utils";
 const resolvers = {
@@ -11,28 +12,48 @@ const resolvers = {
             error: "there is no gameTitle",
           };
         }
+        const manyA1 = textTest.map((aData) => ({
+          body: aData.answer1,
+        }));
+
+        const manyA2 = textTest.map((aData) => ({
+          body: aData.answer2,
+        }));
+        const manyA = manyA1.concat(manyA2);
+        console.log(manyA);
         const manyQ = textTest.map((aData) => ({
           questionBody: aData.question,
+          answer: {
+            create: manyA,
+          },
         }));
+
+        // const manyQ = textTest.map((aData) => ({
+        //   questionBody: aData.question,
+        // }));
+        // console.log(manyQ);
 
         //! question에는 어떻게 데이터 저장할지
 
-        client.content.create({
+        await client.content.create({
           data: {
             type: "textGame",
             title,
             desc,
             userId: loggedInUser.id,
             question: {
-              create: {
-                questionBody: textTest.answer1,
-                answer: {
-                  create: textTest.answer2,
-                },
-              },
+              create: manyQ,
             },
           },
         });
+
+        // await client.question.create({
+        //   data: {
+        //     body: {
+        //       create: manyA,
+        //     },
+        //   },
+        // });
 
         return {
           ok: true,
