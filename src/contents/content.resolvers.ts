@@ -19,4 +19,12 @@ export default {
       });
     },
   },
+
+  Question: {
+    answer: ({ questionId }) => {
+      return client.answer.findMany({
+        where: { id: questionId },
+      });
+    },
+  },
 };

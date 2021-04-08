@@ -2,7 +2,6 @@ import { Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 import { createWriteStream } from "fs";
 import { uploadToS3 } from "../../../shared/shared.utils";
-
 const resolvers: Resolvers = {
   Mutation: {
     uploadContent: protectedResolver(
@@ -25,13 +24,11 @@ const resolvers: Resolvers = {
         // const writeStream = createWriteStream(
         //   process.cwd() + "/uploads/" + newFilename
         // );
-
         // readStream.pipe(writeStream);
         // fileUrl = `http://localhost:4000/uploads/${newFilename}`;
         //     })
         //   );
         // }
-
         // const newFileObj = newFile.map((file) => ({
         //   photoUrl: file,
         //   photoName: file.split("-")[file.split("-").length - 1],
@@ -70,7 +67,6 @@ const resolvers: Resolvers = {
           // const writeStream = createWriteStream(
           //   process.cwd() + "/uploads/" + newFilename
           // );
-
           // readStream.pipe(writeStream);
           // fileUrl = `http://localhost:4000/uploads/${newFilename}`;
           return await client.photo.create({
@@ -81,7 +77,6 @@ const resolvers: Resolvers = {
             },
           });
         }
-
         // const newFileObj = {
         //   photoUrl: fileUrl,
         //   photoName: fileUrl.split("-")[file.split("-").length - 1],
@@ -90,5 +85,4 @@ const resolvers: Resolvers = {
     ),
   },
 };
-
 export default resolvers;
