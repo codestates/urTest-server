@@ -37,7 +37,7 @@ const resolvers = {
 
         await client.content.create({
           data: {
-            type: "textGame",
+            type: "textgame",
             title,
             desc,
             userId: loggedInUser.id,
