@@ -19,7 +19,6 @@ model User {
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   bookMarks BookMark[]
-  comments  Comment[]
 }
 
 model Content {
@@ -38,11 +37,14 @@ model Content {
 }
 
 model Photo {
-  id        Int     @id @default(autoincrement())
-  Content   Content @relation(fields: [contentId], references: [id])
+  id        Int      @id @default(autoincrement())
+  Content   Content  @relation(fields: [contentId], references: [id])
   contentId Int
+  winCount  Int      @default(0)
   photoUrl  String
   photoName String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model BookMark {
@@ -58,11 +60,12 @@ model BookMark {
 }
 
 model Comment {
-  id        Int      @id @default(autoincrement())
-  User      User     @relation(fields: [userId], references: [id])
-  userId    Int
+  id Int @id @default(autoincrement())
+
   Content   Content  @relation(fields: [contentId], references: [id])
   contentId Int
+  password  String
+  desc      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
