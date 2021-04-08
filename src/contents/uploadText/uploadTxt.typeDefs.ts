@@ -8,7 +8,6 @@ export default gql`
   }
 
   input data {
-    id: String
     question: String
     answer1: String
     answer2: String
