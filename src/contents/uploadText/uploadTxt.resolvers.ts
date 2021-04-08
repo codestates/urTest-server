@@ -47,14 +47,6 @@ const resolvers = {
           },
         });
 
-        // await client.question.create({
-        //   data: {
-        //     body: {
-        //       create: manyA,
-        //     },
-        //   },
-        // });
-
         return {
           ok: true,
         };
@@ -63,29 +55,3 @@ const resolvers = {
   },
 };
 export default resolvers;
-
-// if (textTest) {
-
-// let arr = [];
-// let wow = [];
-// for (let index = 0; index < textTest.length; index++) {
-//   let each = [];
-//   arr.push(textTest[index][0].eachTest);
-//   for (let i = 1; i < textTest[index].length; i++) {
-//     each.push(textTest[index][i].eachTest);
-//   }
-//   wow.push(each);
-// }
-
-// console.log(arr);
-// console.log(wow);
-//!
-// await textTest.map((data) => {
-//   arr.push(data[0].eachTest);
-// });
-// wow.push(data[1].eachTest);
-//!
-
-// const titles = arr.map((ttl) => ({
-//   questionBody: ttl,
-// }));

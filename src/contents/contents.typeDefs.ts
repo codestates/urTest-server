@@ -14,6 +14,7 @@ export default gql`
     id: Int!
     questionBody: String
     contentId: Int!
+    answer: [Answer]
     createdAt: String!
     updatedAt: String!
   }
@@ -35,5 +36,13 @@ export default gql`
     userId: Int
     createdAt: String
     updatedAt: String
+  }
+
+  type Answer {
+    id: Int!
+    body: String
+    questionId: Int!
+    createdAt: String!
+    updatedAt: String!
   }
 `;
