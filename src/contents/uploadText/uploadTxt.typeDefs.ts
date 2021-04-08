@@ -8,10 +8,13 @@ export default gql`
   }
 
   input data {
-    eachTest: String
+    id: String
+    question: String
+    answer1: String
+    answer2: String
   }
 
   type Mutation {
-    uploadText(textTest: [[data]], title: String, desc: String): TextResult
+    uploadText(textTest: [data], title: String, desc: String): TextResult
   }
 `;
