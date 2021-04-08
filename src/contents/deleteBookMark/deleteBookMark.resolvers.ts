@@ -3,13 +3,22 @@ import { protectedResolver } from "../../users/users.utils";
 
 const resolvers: Resolvers = {
   Mutation: {
-    likePhoto: protectedResolver(
+    deleteBookMark: protectedResolver(
       async (_, { id }, { loggedInUser, client }) => {
-        const ok = await client.content.findUnique({
+        if (!id) {
+          return {
+            ok: false,
+            error: "Id not found",
+          };
+        }
+        await client.bookMark.delete({
           where: {
             id,
           },
         });
+        return {
+          ok: true,
+        };
       }
     ),
   },

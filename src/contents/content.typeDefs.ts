@@ -6,8 +6,6 @@ export default gql`
     contentId: Int!
     photoUrl: String!
     photoName: String!
-    createdAt: String!
-    updatedAt: String!
   }
 
   type Question {
@@ -19,7 +17,16 @@ export default gql`
   }
   type BookMark {
     id: Int!
-    Content: Content!
+    userId: Int!
+    contentId: Int!
+    createdAt: String!
+    updatedAt: String!
+  }
+  type Comment {
+    id: Int!
+    password: String!
+    desc: String!
+    contentId: Int!
     createdAt: String!
     updatedAt: String!
   }
@@ -28,6 +35,7 @@ export default gql`
     id: Int
     user: User
     question: [Question]
+    comments: Comment
     photos: [Photo]
     title: String
     desc: String
