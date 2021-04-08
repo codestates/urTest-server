@@ -32,22 +32,13 @@ const resolvers: Resolvers = {
         //   );
         // }
 
-<<<<<<< HEAD
-        const newFileObj = newFile.map((file) => ({
-          photoUrl: file,
-          photoName: file.split("-")[file.split("-").length - 1],
-        }));
-
-        await client.content.create({
-=======
         // const newFileObj = newFile.map((file) => ({
         //   photoUrl: file,
         //   photoName: file.split("-")[file.split("-").length - 1],
         // }));
         return await client.content.create({
->>>>>>> b8d3c5dbeb3e64e2dd4dfed7ebbe185587eef912
           data: {
-            type: "imgGame",
+            type: "imggame",
             title,
             desc,
             userId: loggedInUser.id,
