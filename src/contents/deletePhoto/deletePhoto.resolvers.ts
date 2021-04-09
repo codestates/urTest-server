@@ -5,6 +5,12 @@ const resolvers: Resolvers = {
   Mutation: {
     deletePhoto: protectedResolver(
       async (_, { id }, { loggedInUser, client }) => {
+        if (!id) {
+          return {
+            ok: false,
+            error: "Id not found",
+          };
+        }
         const photo = await client.photo.findUnique({
           where: {
             id,

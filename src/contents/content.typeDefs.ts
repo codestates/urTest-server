@@ -7,7 +7,6 @@ export default gql`
     photoUrl: String!
     photoName: String!
   }
-
   type Question {
     id: Int!
     questionBody: String
@@ -31,7 +30,6 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-
   type Content {
     id: Int
     user: User
@@ -45,7 +43,6 @@ export default gql`
     createdAt: String
     updatedAt: String
   }
-
   type Answer {
     id: Int!
     body: String

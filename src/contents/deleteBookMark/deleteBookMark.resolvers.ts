@@ -11,6 +11,17 @@ const resolvers: Resolvers = {
             error: "Id not found",
           };
         }
+        const bookMark = await client.bookMark.findUnique({
+          where: {
+            id,
+          },
+        });
+        if (bookMark.userId !== loggedInUser.id) {
+          return {
+            ok: false,
+            error: "Not authorized",
+          };
+        }
         await client.bookMark.delete({
           where: {
             id,
