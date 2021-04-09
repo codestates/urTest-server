@@ -12,26 +12,25 @@ const resolvers = {
             error: "there is no gameTitle",
           };
         }
-        const manyA1 = textTest.map((aData) => ({
-          body: aData.answer1,
-        }));
-
-        const manyA2 = textTest.map((aData) => ({
-          body: aData.answer2,
-        }));
-        const manyA = manyA1.concat(manyA2);
-        console.log(manyA);
-        const manyQ = textTest.map((aData) => ({
-          questionBody: aData.question,
-          answer: {
-            create: manyA,
-          },
-        }));
-
-        // const manyQ = textTest.map((aData) => ({
-        //   questionBody: aData.question,
+        //! 문제
+        // const manyA1 = textTest.map((aData) => ({
+        //   body: aData.answer1,
         // }));
-        // console.log(manyQ);
+        // const manyA2 = textTest.map((aData) => ({
+        //   body: aData.answer2,
+        // }));
+
+        const manyQ2 = textTest.map((aData) => {
+          const eachTest = [{ body: aData.answer1 }, { body: aData.answer2 }];
+          console.log(eachTest);
+
+          return {
+            questionBody: aData.question,
+            answer: {
+              create: eachTest,
+            },
+          };
+        });
 
         //! question에는 어떻게 데이터 저장할지
 
@@ -42,7 +41,7 @@ const resolvers = {
             desc,
             userId: loggedInUser.id,
             question: {
-              create: manyQ,
+              create: manyQ2,
             },
           },
         });
