@@ -13,17 +13,17 @@ export default {
       });
     },
 
-    question: ({ contentId }) => {
+    question: ({ id }) => {
       return client.question.findMany({
-        where: { id: contentId },
+        where: { contentId: id },
       });
     },
   },
 
   Question: {
-    answer: ({ questionId }) => {
+    answer: ({ id }) => {
       return client.answer.findMany({
-        where: { id: questionId },
+        where: { questionId: id },
       });
     },
   },
