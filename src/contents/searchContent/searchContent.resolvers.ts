@@ -1,9 +1,27 @@
 import { Resolvers } from "../../types";
-import { protectedResolver } from "../../users/users.utils";
 
 const resolvers: Resolvers = {
   Query: {
-    searchContent: async (_, { keyword }, { client }) => {
+    searchContent: async (_, { keyword, type }, { client }) => {
+      if (type === "textgame") {
+        return await client.content.findMany({
+          where: {
+            type: "textgame",
+            title: {
+              contains: keyword.toLowerCase(),
+            },
+          },
+        });
+      } else if (type === "imggame") {
+        return await client.content.findMany({
+          where: {
+            type: "imggame",
+            title: {
+              contains: keyword.toLowerCase(),
+            },
+          },
+        });
+      }
       return await client.content.findMany({
         where: {
           title: {
