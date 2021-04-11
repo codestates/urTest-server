@@ -1,11 +1,11 @@
 import { gql } from "apollo-server-core";
 
 export default gql`
-  type addCountResult {
+  type addCountPhotoResult {
     ok: Boolean!
     error: String
   }
   type Mutation {
-    addCount(id: Int!): addCountResult
+    addCountPhoto(id: Int!): addCountPhotoResult
   }
 `;

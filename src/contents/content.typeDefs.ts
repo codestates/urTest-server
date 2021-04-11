@@ -10,7 +10,6 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-
   type BookMark {
     id: Int!
     userId: Int!
@@ -26,7 +25,6 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-
   type Question {
     id: Int!
     questionBody: String
@@ -44,7 +42,6 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-
   type Content {
     id: Int
     user: User

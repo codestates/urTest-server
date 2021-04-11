@@ -2,7 +2,7 @@ import { Resolvers } from "../../types";
 
 const resolvers: Resolvers = {
   Mutation: {
-    addCount: async (_, { id }, { client }) => {
+    addCountPhoto: async (_, { id }, { client }) => {
       if (!id) {
         return {
           ok: false,
