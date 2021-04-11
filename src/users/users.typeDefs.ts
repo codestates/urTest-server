@@ -6,6 +6,7 @@ export default gql`
     userName: String
     email: String
     grade: String
+    bookMarks: [BookMark]
     contents: [Content]
     contentType: [Content]
     createdAt: String

@@ -38,11 +38,11 @@ model Content {
 
 model Photo {
   id        Int      @id @default(autoincrement())
-  Content   Content  @relation(fields: [contentId], references: [id])
-  contentId Int
   winCount  Int      @default(0)
   photoUrl  String
   photoName String
+  Content   Content  @relation(fields: [contentId], references: [id])
+  contentId Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
@@ -72,23 +72,24 @@ model Comment {
 
 model Question {
   id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  winCount     Int      @default(0)
   questionBody String
   answer       Answer[]
   Content      Content  @relation(fields: [contentId], references: [id])
   contentId    Int
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model Answer {
 
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  body      String
-
+  id         Int      @id @default(autoincrement())
+  winCount   Int      @default(0)
+  body       String
   Question   Question @relation(fields: [questionId], references: [id])
   questionId Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 // To do : migrate

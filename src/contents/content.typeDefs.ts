@@ -6,12 +6,16 @@ export default gql`
     contentId: Int!
     photoUrl: String!
     photoName: String!
+    winCount: Int!
+    createdAt: String!
+    updatedAt: String!
   }
   type Question {
     id: Int!
     questionBody: String
     contentId: Int!
     answer: [Answer]
+    winCount: Int!
     createdAt: String!
     updatedAt: String!
   }
@@ -34,7 +38,8 @@ export default gql`
     id: Int
     user: User
     question: [Question]
-    comments: Comment
+    bookMarks: [BookMark]
+    comments: [Comment]
     photos: [Photo]
     title: String
     desc: String
@@ -46,6 +51,7 @@ export default gql`
   type Answer {
     id: Int!
     body: String
+    winCount: Int!
     questionId: Int!
     createdAt: String!
     updatedAt: String!

@@ -17,6 +17,16 @@ export default {
         where: { contentId: id },
       });
     },
+    comments: ({ id }) => {
+      return client.comment.findMany({
+        where: { contentId: id },
+      });
+    },
+    bookMarks: ({ id }) => {
+      return client.bookMark.findMany({
+        where: { contentId: id },
+      });
+    },
   },
   Question: {
     answer: ({ id }) => {
