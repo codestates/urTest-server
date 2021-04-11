@@ -10,15 +10,7 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-  type Question {
-    id: Int!
-    questionBody: String
-    contentId: Int!
-    answer: [Answer]
-    winCount: Int!
-    createdAt: String!
-    updatedAt: String!
-  }
+
   type BookMark {
     id: Int!
     userId: Int!
@@ -34,6 +26,25 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
+
+  type Question {
+    id: Int!
+    questionBody: String
+    contentId: Int!
+    answer: [Answer]
+    winCount: Int!
+    createdAt: String!
+    updatedAt: String!
+  }
+  type Answer {
+    id: Int!
+    body: String
+    winCount: Int!
+    questionId: Int!
+    createdAt: String!
+    updatedAt: String!
+  }
+
   type Content {
     id: Int
     user: User
@@ -47,13 +58,5 @@ export default gql`
     userId: Int
     createdAt: String
     updatedAt: String
-  }
-  type Answer {
-    id: Int!
-    body: String
-    winCount: Int!
-    questionId: Int!
-    createdAt: String!
-    updatedAt: String!
   }
 `;
