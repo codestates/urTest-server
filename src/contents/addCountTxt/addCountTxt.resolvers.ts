@@ -15,7 +15,7 @@ const resolvers: Resolvers = {
           id,
         },
       });
-      console.log(rightAnswer);
+      // console.log(rightAnswer);
       await client.answer.update({
         where: {
           id,
