@@ -6,17 +6,21 @@ export default gql`
     error: String
   }
 
-  input answers {
+  input edit {
+    id: Int
+    question: String
     answer1: String
     answer2: String
   }
 
   type Mutation {
     editTxt(
-      id: Int
+      id: Int!
       question: String
       answer1: String
       answer2: String
     ): EditTextResult!
+
+    editTxtAll(allEdit: [edit]): EditTextResult
   }
 `;
