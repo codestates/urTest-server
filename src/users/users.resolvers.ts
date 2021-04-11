@@ -9,9 +9,12 @@ export default {
     },
     contentType: ([{ type }]) => {
       return client.content.findMany({
-        where: {
-          type,
-        },
+        where: { type },
+      });
+    },
+    bookMarks: ({ id }) => {
+      return client.bookMark.findMany({
+        where: { userId: id },
       });
     },
   },
