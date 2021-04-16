@@ -1,12 +1,11 @@
 import { gql } from "apollo-server-core";
 
 export default gql`
-  type bookMarkResult {
+  type addViewsResult {
     ok: Boolean!
-    id: Int!
     error: String
   }
   type Mutation {
-    addBookMark(id: Int!): bookMarkResult
+    addViews(id: Int!): addViewsResult
   }
 `;

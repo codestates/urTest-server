@@ -27,7 +27,7 @@ const resolvers: Resolvers = {
       }
       const data = await client.user.create({
         data: {
-          userName: "null",
+          userName: "oauth",
           email: user_email,
           password: "password",
         },
