@@ -27,6 +27,7 @@ model Content {
   bookMarks BookMark[]
   comments  Comment[]
   question  Question[]
+  views     Int        @default(0)
   title     String
   desc      String
   type      String

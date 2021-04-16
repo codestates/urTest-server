@@ -45,6 +45,7 @@ export default gql`
   type Content {
     id: Int
     user: User
+    views: Int
     question: [Question]
     bookMarks: [BookMark]
     comments: [Comment]
