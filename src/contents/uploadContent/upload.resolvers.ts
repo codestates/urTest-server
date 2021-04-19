@@ -73,7 +73,9 @@ const resolvers: Resolvers = {
             data: {
               contentId: content.id,
               photoUrl: fileUrl,
-              photoName: fileUrl.split("-")[fileUrl.split("-").length - 1],
+              photoName: decodeURI(
+                fileUrl.split("-")[fileUrl.split("-").length - 1]
+              ).replace(/(.png|.jpg|.jpeg|.gif)$/, ""),
             },
           });
         }
