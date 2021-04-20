@@ -23,7 +23,7 @@ const resolvers: Resolvers = {
             error: "Not authorized",
           };
         }
-        const question = await client.question.findMany({
+        const findQuestion = await client.question.findMany({
           where: {
             contentId: content.id,
           },
@@ -44,7 +44,7 @@ const resolvers: Resolvers = {
             contentId: content.id,
           },
         });
-        question.map(async (item) => {
+        findQuestion.map(async (item) => {
           await client.answer.deleteMany({
             where: {
               questionId: item.id,
@@ -56,7 +56,6 @@ const resolvers: Resolvers = {
             contentId: content.id,
           },
         });
-
         await client.content.delete({
           where: {
             id,
