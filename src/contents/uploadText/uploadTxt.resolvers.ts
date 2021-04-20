@@ -22,7 +22,6 @@ const resolvers = {
 
         const manyQ2 = textTest.map((aData) => {
           const eachTest = [{ body: aData.answer1 }, { body: aData.answer2 }];
-          console.log(eachTest);
 
           return {
             questionBody: aData.question,

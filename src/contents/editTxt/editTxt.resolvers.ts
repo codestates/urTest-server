@@ -52,7 +52,6 @@ const resolvers = {
         });
 
         const newArr = [];
-        console.log(answers);
 
         if (editData.answer1 && editData.answer2) {
           newArr.push(editData.answer1);
@@ -64,8 +63,6 @@ const resolvers = {
           newArr.push(answers[0].body);
           newArr.push(editData.answer2);
         }
-
-        console.log(newArr);
 
         answers.map(async (one, idx) => {
           await client.answer.update({

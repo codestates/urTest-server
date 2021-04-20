@@ -6,6 +6,6 @@ export default gql`
     error: String
   }
   type Mutation {
-    deleteContent(id: Int!): deleteContentResult
+    deleteContent(id: Int!): deleteContentResult!
   }
 `;

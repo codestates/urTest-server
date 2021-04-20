@@ -76,21 +76,21 @@ model Question {
   winCount     Int      @default(0)
   questionBody String
   answer       Answer[]
-  Content      Content  @relation(fields: [contentId], references: [id])
-  contentId    Int
+  Content      Content? @relation(fields: [contentId], references: [id])
+  contentId    Int?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
 
 model Answer {
 
-  id         Int      @id @default(autoincrement())
-  winCount   Int      @default(0)
+  id         Int       @id @default(autoincrement())
+  winCount   Int       @default(0)
   body       String
-  Question   Question @relation(fields: [questionId], references: [id])
-  questionId Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  Question   Question? @relation(fields: [questionId], references: [id])
+  questionId Int?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
 }
 
 // To do : migrate
