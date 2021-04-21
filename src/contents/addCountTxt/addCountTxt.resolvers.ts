@@ -16,7 +16,7 @@ const resolvers: Resolvers = {
         },
       });
       // console.log(rightAnswer);
-      await client.answer.update({
+      const answer = await client.answer.update({
         where: {
           id,
         },
@@ -26,6 +26,7 @@ const resolvers: Resolvers = {
       });
       return {
         ok: true,
+        countAll: answer.winCount,
       };
     },
   },
