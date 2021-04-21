@@ -17,7 +17,11 @@ const resolvers: Resolvers = {
             id,
           },
         });
-        if (content.userId !== loggedInUser.id) {
+
+        if (
+          content.userId !== loggedInUser.id &&
+          loggedInUser.grade !== "admin"
+        ) {
           return {
             ok: false,
             error: "Not authorized",
