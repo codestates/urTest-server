@@ -63,7 +63,10 @@ const resolvers: Resolvers = {
             ok: false,
             error: "Photo not found.",
           };
-        } else if (content.userId !== loggedInUser.id) {
+        } else if (
+          content.userId !== loggedInUser.id &&
+          loggedInUser.grade !== "admin"
+        ) {
           return {
             ok: false,
             error: "Not authorized",
